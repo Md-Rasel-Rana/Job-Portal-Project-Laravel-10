@@ -29,36 +29,30 @@
 
                     <div class="mb-4">
                         <h2>Category</h2>
-                        <select name="category" id="category" class="form-control">
+                        <select name="category" id="jobcategory" class="form-control">
                             <option value="">Select a Category</option>
-                            <option value="">Engineering</option>
-                            <option value="">Accountant</option>
-                            <option value="">Information Technology</option>
-                            <option value="">Fashion designing</option>
+                           
                         </select>
                     </div>                   
 
                     <div class="mb-4">
                         <h2>Job Type</h2>
+                        @foreach ( $jobtype as $jobtypeitem)
+                       
                         <div class="form-check mb-2"> 
-                            <input class="form-check-input " name="job_type" type="checkbox" value="1" id="">    
-                            <label class="form-check-label " for="">Full Time</label>
+                            <input class="form-check-input " name="job_type" type="checkbox" value="{{$jobtypeitem->id }}" id="jobtype-id-{{ $jobtypeitem->id }}">    
+                            <label for="jobtype-id-{{ $jobtypeitem->id }}" class="form-check-label " for="">{{$jobtypeitem->name }}</label>
                         </div>
+                            
+                        @endforeach
+                       
 
-                        <div class="form-check mb-2"> 
-                            <input class="form-check-input school-section" name="job_type" type="checkbox" value="1" id="">    
-                            <label class="form-check-label " for="">Part Time</label>
-                        </div>
+                      
 
-                        <div class="form-check mb-2"> 
-                            <input class="form-check-input school-section" name="job_type" type="checkbox" value="1" id="">    
-                            <label class="form-check-label " for="">Freelance</label>
-                        </div>
+                       
 
-                        <div class="form-check mb-2"> 
-                            <input class="form-check-input school-section" name="job_type" type="checkbox" value="1" id="">    
-                            <label class="form-check-label " for="">Remote</label>
-                        </div>
+                       
+
                     </div>
 
                     <div class="mb-4">
@@ -250,3 +244,13 @@
         </div>
     </div>
 </section>
+<script>
+        FillCategoryDropDown();
+async function FillCategoryDropDown(){
+    let res = await axios.get("/list-category")
+    res.data.forEach(function (item,i) {
+        let option=`<option value="${item['id']}">${item['name']}</option>`
+        $("#jobcategory").append(option);
+    })
+}
+</script>

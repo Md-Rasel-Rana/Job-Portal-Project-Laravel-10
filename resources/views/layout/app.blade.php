@@ -11,6 +11,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}" />
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
+	<link href="{{asset('css/toastify.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" />
+    <script src="{{asset('js/jquery-3.7.0.min.js')}}"></script>
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/toastify-js.js')}}"></script>
+    <script src="{{asset('js/axios.min.js')}}"></script>
+    <script src="{{asset('js/config.js')}}"></script>
 </head>
 <body data-instant-intensity="mousedown">
 
@@ -19,7 +26,7 @@
 @include('layout.footer')
 
 
-<script src="{{ asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+
 <script src="{{ asset('assets/js/bootstrap.bundle.5.1.3.min.js') }}"></script>
 <script src="{{ asset('assets/js/instantpages.5.1.0.min.js') }}"></script>
 <script src="{{ asset('assets/js/lazyload.17.6.0.min.js') }}"></script>

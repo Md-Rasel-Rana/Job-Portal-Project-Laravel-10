@@ -15,6 +15,7 @@
 					</li>										
 				</ul>				
 				<a class="btn btn-outline-primary me-2" href="{{url('/login')}}" type="submit">Login</a>
+				<a class="btn btn-outline-primary me-2" href="{{url('/logout')}}">Logout</a>
 				<a class="btn btn-primary" href="{{url('/job-post')}}" type="submit">Post a Job</a>
 			</div>
 		</div>

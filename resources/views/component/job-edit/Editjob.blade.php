@@ -26,40 +26,38 @@
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush ">
                             <li class="list-group-item d-flex justify-content-between p-3">
-                                <a href="{{ url('/account') }}">Account Settings</a>
+                                <a href="account.html">Account Settings</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="{{ url('job-post') }}">Post a Job</a>
+                                <a href="post-job.html">Post a Job</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="{{ url('/my-job') }}">My Jobs</a>
+                                <a href="my-jobs.html">My Jobs</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="{{ url('/applied-job') }}">Jobs Applied</a>
+                                <a href="job-applied.html">Jobs Applied</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="{{ url('/save-job') }}">Saved Jobs</a>
+                                <a href="saved-jobs.html">Saved Jobs</a>
                             </li>                                                        
                         </ul>
                     </div>
                 </div>
             </div>
-
-           
             <div class="col-lg-9">
                 <div class="card border-0 shadow mb-4 ">
                     <div class="card-body card-form p-4">
                         <h3 class="fs-4 mb-1">Job Details</h3>
                         <div class="row">
-                            {{-- <form > --}}
                             <div class="col-md-6 mb-4">
                                 <label for="" class="mb-2">Title<span class="req">*</span></label>
-                                <input type="text" placeholder="Job Title" id="title" name="title" class="form-control">
+                                <input type="text" placeholder="Job Title" id="title" name="title" value="{{ $data->title }}" class="form-control">
+                                <input type="hidden" placeholder="Job Title" id="jobid" name="jobid" value="{{ $data->id }}" class="form-control">
                             </div>
                             <div class="col-md-6  mb-4">
                                 <label for="" class="mb-2">Category<span class="req">*</span></label>
-                                <select type="text" name="category"  id="jobcategory" class="form-control">
-                                    <option >Select a Category</option>
+                                <select name="category" id="jobcategory" class="form-control">
+                                    <option value="">Select a Category</option>
                                    
                                 </select>
                             </div>
@@ -68,55 +66,54 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label for="" class="mb-2">Job Nature<span class="req">*</span></label>
-                                <select  type="text" class="form-select" id="jobtypelist">
-                                    <option >Select a Category</option>
+                                <select class="form-select" id="jobtypelist">
+                                <option value="">Select a Category</option>
                                 </select>
                             </div>
                             <div class="col-md-6  mb-4">
                                 <label for="" class="mb-2">Vacancy<span class="req">*</span></label>
-                                <input type="number" min="1" placeholder="Vacancy" id="vacancy" name="vacancy" class="form-control">
+                                <input type="number" min="1" placeholder="Vacancy" id="vacancy" name="vacancy"  value="{{$data->vacancy}}" class="form-control">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="mb-4 col-md-6">
                                 <label for="" class="mb-2">Salary</label>
-                                <input type="text" placeholder="Salary" id="salary" name="salary" class="form-control">
+                                <input type="text" placeholder="Salary" id="salary" name="salary"  value="{{$data->salary}}" class="form-control">
                             </div>
 
                             <div class="mb-4 col-md-6">
                                 <label for="" class="mb-2">Location<span class="req">*</span></label>
-                                <input type="text" placeholder="location" id="location" name="Location" class="form-control">
+                                <input type="text" placeholder="location" id="location" name="Location" value="{{$data->location}}" class="form-control">
                             </div>
-                        </div>
-
-                        <div class="col-md-6 mb-4">
-                            <label for="" class="mb-2">Experience<span class="req">*</span></label>
-                            <input type="text" placeholder="Job experience" id="experience" name="experience" class="form-control">
+                            <div class="mb-4 col-md-6">
+                                <label for="" class="mb-2">experience<span class="req">*</span></label>
+                                <input type="text" placeholder="experience" id="experience" name="experience" value="{{$data->experience}}" class="form-control">
+                            </div>
                         </div>
 
                         <div class="mb-4">
                             <label for="" class="mb-2">Description<span class="req">*</span></label>
-                            <textarea class="form-control" name="description" id="description" cols="5" rows="5" placeholder="Description"></textarea>
+                            <textarea class="form-control" name="description" id="description" cols="5" rows="5" value="" placeholder="Description">{{$data->description}}</textarea>
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Benefits</label>
-                            <textarea class="form-control" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
+                            <textarea class="form-control" name="benefits" id="benefits" cols="5" rows="5" value=""  placeholder="Benefits">{{$data->benefits}}</textarea>
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Responsibility</label>
-                            <textarea class="form-control" name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility"></textarea>
+                            <textarea class="form-control" name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility">{{$data->responsibility}}</textarea>
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Qualifications</label>
-                            <textarea class="form-control" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications"></textarea>
+                            <textarea class="form-control" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications">{{$data->qualifications}}</textarea>
                         </div>
                         
                         
 
                         <div class="mb-4">
                             <label for="" class="mb-2">Keywords<span class="req">*</span></label>
-                            <input type="text" placeholder="keywords" id="keywords" name="keywords" class="form-control">
+                            <input type="text" placeholder="keywords" id="keywords" name="keywords" value="{{ $data->keywords }}" class="form-control">
                         </div>
 
                         <h3 class="fs-4 mb-1 mt-5 border-top pt-5">Company Details</h3>
@@ -124,56 +121,55 @@
                         <div class="row">
                             <div class="mb-4 col-md-6">
                                 <label for="" class="mb-2">Name<span class="req">*</span></label>
-                                <input type="text" placeholder="Company Name" id="company_name" name="company_name" class="form-control">
+                                <input type="text" placeholder="Company Name" id="company_name" value="{{ $data->company_name }}" name="company_name" class="form-control">
                             </div>
 
                             <div class="mb-4 col-md-6">
                                 <label for="" class="mb-2">Location</label>
-                                <input type="text" placeholder="Location" id="company_location" name="location" class="form-control">
+                                <input type="text" placeholder="Location" id="company_location"value="{{ $data->company_location }}" name="location" class="form-control">
                             </div>
                         </div>
 
                         <div class="mb-4">
                             <label for="" class="mb-2">Website</label>
-                            <input type="text" placeholder="Website" id="website" name="website" class="form-control">
+                            <input type="text" placeholder="Website" id="website" name="website" value="{{ $data->website }}" class="form-control">
                         </div>
                     </div> 
                     <div class="card-footer  p-4">
-                        <button type="submit" onclick="Save()" class="btn btn-primary">Save Job</button>
-                    </div>      
-                {{-- </form>          --}}
-            </div>
-            
+                        <button type="button" onclick="Save()" class="btn btn-primary">Save Job</button>
+                    </div>               
+            </div>  
         </div>
     </div>
-
 </section>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title pb-0" id="exampleModalLabel">Change Profile Picture</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-              <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Profile Image</label>
-                  <input type="file" class="form-control" id="image"  name="image">
-              </div>
-              <div class="d-flex justify-content-end">
-                  <button type="submit" class="btn btn-primary mx-3">Update</button>
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-          </form>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title pb-0" id="exampleModalLabel">Change Profile Picture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Profile Image</label>
+                <input type="file" class="form-control" id="image"  name="image">
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary mx-3">Update</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            
+        </form>
       </div>
     </div>
   </div>
-  <script>
-    
-    FillCategoryDropDown();
+</div>
+
+<script>
+
+
+FillCategoryDropDown();
 async function FillCategoryDropDown(){
     let res = await axios.get("/list-category")
     res.data.forEach(function (item,i) {
@@ -190,7 +186,10 @@ async function FillCategoryDropDown1(){
     })
 }
 
+  
+
     async function Save(){
+        let jobID = document.getElementById("jobid").value;
         let title = document.getElementById("title").value;
         let category_id = document.getElementById("jobcategory").value;
         let jobtype_id = document.getElementById("jobtypelist").value;
@@ -211,6 +210,7 @@ async function FillCategoryDropDown1(){
         }else{
             try{
                 let formData=new FormData();
+            formData.append('jobID',jobID)
             formData.append('title',title)
             formData.append('category_id',category_id)
             formData.append('jobtype_id',jobtype_id)
@@ -232,7 +232,7 @@ async function FillCategoryDropDown1(){
                     'content-type': 'multipart/form-data'
                 }
             }
-                let res = await axios.post('/job-save',formData,config);
+                let res = await axios.post('/job-update',formData,config);
                 if(res.status===201){
                     successToast(res.data.message);
                 }
@@ -242,4 +242,5 @@ async function FillCategoryDropDown1(){
         }
     }
 
-  </script>
+
+</script>
