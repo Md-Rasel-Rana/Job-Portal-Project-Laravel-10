@@ -68,6 +68,15 @@ class JobController extends Controller
       ],201);
 
   }
+  public function jobdetails($id){
+         $jobs = Job::where([
+            'id'=>$id,
+            'status'=>1
+         ])->with(['jobtype','category'])->first();
+
+
+   return view('pages.jobdetail',compact('jobs'));
+  }
 
 
 

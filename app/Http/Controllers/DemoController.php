@@ -16,10 +16,36 @@ class DemoController extends Controller
         $latestjob= Job::where('status',"=",1)->with('jobtype')->orderBy('created_at','DESC')->limit(10)->get();
         return view("pages.hero",compact('category','Featuredjob','latestjob'));
     }
-    public function FindJob(){
-        $jobtype =Jobtype::where('status','=',1)->get();
-        return view("pages.Find-jobs",compact('jobtype'));
+    public function FindJob(Request $request){
+        $jobtype = Jobtype::where('status', '=', 1)->get();
+        $jobs = Job::where('status', 1);
+    
+        if (!empty($request->keyword)) {
+            $jobs->where(function($query) use ($request) {
+                $query->where('title', 'LIKE', '%' . $request->keyword . '%')
+                      ->orWhere('keywords', 'LIKE', '%' . $request->keyword . '%');
+            });
+        }
+
+        if (!empty($request->location)) {
+            $jobs->where('location', $request->location );
+        }
+        if (!empty($request->category)) {
+            $jobs->where('category_id', $request->category);
+        }
+        if (!empty($request->jobtype)){
+           $jobtypearray = explode(',',$request->jobtype);
+            $jobs->whereIn('jobtype_id',$jobtypearray);
+        }
+        if (!empty($request->experience)){
+            $jobs->where('experience',$request->experience);
+        }
+    
+        $jobs = $jobs->with('jobtype')->orderBy('created_at','DESC')->paginate(9);
+    
+        return view("pages.Find-jobs", compact('jobtype', 'jobs'));
     }
+    
     public function LogInpage(){
         return view("pages.login");
     }
@@ -43,6 +69,7 @@ class DemoController extends Controller
         return view("pages.job-applied");
     }
     public function jobdetailspage(){
+            
         return view("pages.job-applied");
     }
 

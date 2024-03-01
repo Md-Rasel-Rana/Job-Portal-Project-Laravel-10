@@ -49,4 +49,5 @@ Route::post('/job-save',[JobController::class,'userjobcreate'])->middleware([Tok
 Route::get('/list-job',[JobController::class,'userjoblist'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/edit-page/{id}',[JobController::class,'editjobpage'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/job-update',[JobController::class,'jobupdate'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/job-detail/{id}',[JobController::class,'jobdetails'])->middleware([TokenVerificationMiddleware::class]);
 

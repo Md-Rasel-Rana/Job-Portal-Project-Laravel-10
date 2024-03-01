@@ -4,7 +4,7 @@
             <div class="col">
                 <nav aria-label="breadcrumb" class=" rounded-3 p-3">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="jobs.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;Back to Jobs</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;Back to Jobs</a></li>
                     </ol>
                 </nav>
             </div>
@@ -20,14 +20,14 @@
                                 
                                 <div class="jobs_conetent">
                                     <a href="#">
-                                        <h4>Software Engineer</h4>
+                                        <h4>{{$jobs->title}}</h4>
                                     </a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> Noida, India</p>
+                                            <p> <i class="fa fa-map-marker"></i> {{$jobs->location}}</p>
                                         </div>
                                         <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                            <p> <i class="fa fa-clock-o"></i> {{$jobs->jobtype->name}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -42,30 +42,26 @@
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
                             <h4>Job description</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                            <p>{{$jobs->description}}</p>
                             <p>Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
                         </div>
                         <div class="single_wrap">
                             <h4>Responsibility</h4>
                             <ul>
-                                <li>The applicants should have experience in the following areas.</li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
+                                <li>{{$jobs->responsibility}}</li>
+                               
                             </ul>
                         </div>
                         <div class="single_wrap">
                             <h4>Qualifications</h4>
                             <ul>
-                                <li>The applicants should have experience in the following areas.</li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
+                                <li>{{ $jobs->qualifications }}</li>
+                              
                             </ul>
                         </div>
                         <div class="single_wrap">
                             <h4>Benefits</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                            <p>{{ $jobs->benefits }}</p>
                         </div>
                         <div class="border-bottom"></div>
                         <div class="pt-3 text-end">
@@ -83,11 +79,11 @@
                         </div>
                         <div class="job_content pt-3">
                             <ul>
-                                <li>Published on: <span>12 Nov, 2019</span></li>
-                                <li>Vacancy: <span>2 Position</span></li>
-                                <li>Salary: <span>50k - 120k/y</span></li>
-                                <li>Location: <span>California, USA</span></li>
-                                <li>Job Nature: <span> Full-time</span></li>
+                                <li>Published on: <span>{{ $jobs->created_at->format('Y-m-d') }}</span></li>
+                                <li>Vacancy: <span>{{$jobs->vacancy}}</span></li>
+                                <li>Salary: <span> {{$jobs->salary}}</span></li>
+                                <li>Location: <span>{{$jobs->location}}</span></li>
+                                <li>Job Nature: <span>{{$jobs->jobtype->name}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -99,9 +95,9 @@
                         </div>
                         <div class="job_content pt-3">
                             <ul>
-                                <li>Name: <span>XYZ Company</span></li>
-                                <li>Locaion: <span>Noida</span></li>
-                                <li>Webite: <span>www.example.com</span></li>
+                                <li>Name: <span>{{$jobs->company_name}}</span></li>
+                                <li>Locaion: <span>{{$jobs->company_location}}</span></li>
+                                <li>Webite: <span>{{$jobs->website}}</span></li>
                             </ul>
                         </div>
                     </div>
