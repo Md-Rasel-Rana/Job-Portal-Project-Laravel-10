@@ -36,11 +36,7 @@
                         @endforeach
                         @else
                             <p>No featured jobs available</p>
-                        @endif
-                        
-                       
-              
-                                                 
+                        @endif                         
                     </div>
                 </div>
             </div>

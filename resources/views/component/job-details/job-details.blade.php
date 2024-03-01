@@ -43,7 +43,7 @@
                         <div class="single_wrap">
                             <h4>Job description</h4>
                             <p>{{$jobs->description}}</p>
-                            <p>Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                            
                         </div>
                         <div class="single_wrap">
                             <h4>Responsibility</h4>
@@ -61,12 +61,15 @@
                         </div>
                         <div class="single_wrap">
                             <h4>Benefits</h4>
-                            <p>{{ $jobs->benefits }}</p>
+                            <p>{{$jobs->benefits}}</p>
                         </div>
                         <div class="border-bottom"></div>
                         <div class="pt-3 text-end">
-                            <a href="#" class="btn btn-secondary">Save</a>
-                            <a href="#" class="btn btn-primary">Apply</a>
+                            <a href="#" class="btn btn-secondary"> Save </a>
+                            <form id="applyForm">
+                                <input type="hidden" name="jobID" id="jobID" value="{{ $jobs->id }}">
+                                <button type="button" onclick="Save()" class="btn btn-primary">Apply</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -130,3 +133,28 @@
     </div>
   </div>
 </div>
+<script>
+
+async function Save() {
+    let jobID = document.getElementById('jobID').value;
+    try {
+
+        let res = await axios.post('/apply-job/',{id:jobID});
+        if (res.status === 201) {
+            // Job applied successfully
+           // showMessage('success', 'Job applied successfully');
+           alert("Applied for the job successfully");
+        } else {
+            // User has already applied for this job
+            //showMessage('error', 'You have already applied for this job');
+            alert("You have already applied for this job");
+        }
+      
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+    
+   
+</script>

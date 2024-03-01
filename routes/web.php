@@ -50,4 +50,5 @@ Route::get('/list-job',[JobController::class,'userjoblist'])->middleware([TokenV
 Route::get('/edit-page/{id}',[JobController::class,'editjobpage'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/job-update',[JobController::class,'jobupdate'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/job-detail/{id}',[JobController::class,'jobdetails'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/apply-job',[JobController::class,'Userjobapply'])->middleware([TokenVerificationMiddleware::class]);
 

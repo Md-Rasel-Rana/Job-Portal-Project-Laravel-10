@@ -62,7 +62,7 @@ class UserController extends Controller
 }
 
     public function userprofilelist(Request $request){
-        $user_id=$request->header('id');
+        $user_id = $request->header('id');
         $data = User::where('id','=',$user_id)->first();
         return response()->json([
             'status' => 'success',

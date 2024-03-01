@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use App\Models\JobApplication;
 
 class JobController extends Controller
 {
@@ -77,6 +78,41 @@ class JobController extends Controller
 
    return view('pages.jobdetail',compact('jobs'));
   }
+  public function Userjobapply(Request $request) {
+   // Get user ID from request headers
+   $user_id = $request->header('id');
+   // Get job ID from request parameters
+   $job_id = $request->id;
+
+   // Check if the user has already applied for the job
+   $existingApplication = JobApplication::where('user_id', $user_id)
+                                        ->where('job_id', $job_id)
+                                        ->exists();
+
+   // If the user has already applied, return an error response
+   if ($existingApplication) {
+       return response()->json([
+           'status' => 'error',
+           'message' => 'You have already applied for this job'
+       ], 400);
+   }
+
+   // If the user has not already applied, create a new job application
+   $job = Job::where('id', $job_id)->first();
+   JobApplication::create([
+       'user_id' => $user_id,
+       'job_id' => $job_id,
+       'employee_id' => $job->user_id,
+       'applied_date' => now(),
+   ]);
+
+   // Return a success response
+   return response()->json([
+       'status' => 'success',
+       'message' => 'Job applied successfully'
+   ], 201);
+}
+
 
 
 
